@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kings_touch_church/constants/constant.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kings_touch_church/model/ministries.dart';
+import 'sermons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -147,6 +148,9 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Sermon.id);
+                  },
                   child: Material(
                     borderRadius: BorderRadius.circular(5),
                     color: kSecondaryColor,

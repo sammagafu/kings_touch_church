@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kings_touch_church/screen/home.dart';
+import 'package:kings_touch_church/screen/sermons.dart';
 import 'package:kings_touch_church/theme/main_theme.dart';
 import 'package:kings_touch_church/screen/onboarding.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       home: OnBoardingScreen(),
       routes: {
         HomePage.id: (context) => HomePage(),
+        Sermon.id: (context) => Sermon(),
       },
     );
   }
