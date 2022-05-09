@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kings_touch_church/constants/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,90 +16,77 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final String logo = 'assets/images/logo.svg';
 
+  List _screens = [WelcomeMessage(), AboutChurch()];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: _screens.length,
+          itemBuilder: (context, index) {
+            return Container(
+              height: double.maxFinite,
+              width: double.maxFinite,
+              child: _screens[index],
+            );
+          }),
+    );
+  }
+}
+
+class WelcomeMessage extends StatelessWidget {
+  const WelcomeMessage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/pastor.jpg"),
-          fit: BoxFit.cover,
-        ),
+            image: AssetImage('assets/images/pastornsia.jpg'),
+            fit: BoxFit.cover),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 65,
-          ),
-          SvgPicture.asset(
-            'assets/images/logo.svg',
-            height: 180.0,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            "We are committed to spreading the gospel of Jesus Christ, His birth, crucifixion, death, resurrection, Second coming and life eternal",
-            style: Theme.of(context).textTheme.bodyText2,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(
-            height: 35,
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, HomePage.id);
-            },
-            style: TextButton.styleFrom(
-                backgroundColor: kPrimaryColor, padding: EdgeInsets.all(18)),
-            child: Text(
-              "Start Using the app",
-              style: Theme.of(context).textTheme.bodyText2,
+      child: Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              'assets/images/logo.svg',
+              // height: 160,
             ),
-          ),
-        ],
+            Text(
+                "Kings Touch Church is a place where you can belong, grow and serve with other believers. Join us as we journey together to be the hands and feet of Jesus Christ")
+          ],
+        ),
       ),
     );
   }
 }
-//
-// Column(
-// children: [
-// Positioned.fill(
-// child: Opacity(
-// opacity: .4,
-// child: Image.asset(
-// 'assets/images/pastor.jpg',
-// fit: BoxFit.cover,
-// ),
-// ),
-// ),
-// Column(
-// mainAxisAlignment: MainAxisAlignment.center,
-// crossAxisAlignment: CrossAxisAlignment.center,
-// children: [
-// SvgPicture.asset(
-// 'assets/images/logo.svg',
-// height: 180.0,
-// ),
-// Text(
-// "Welcome to king's touch church",
-// style: Theme.of(context).textTheme.bodyText1,
-// ),
-// SizedBox(
-// height: 48,
-// ),
-// TextButton(
-// onPressed: () {},
-// style: TextButton.styleFrom(
-// backgroundColor: kPrimaryColor, padding: EdgeInsets.all(18)),
-// child: Text(
-// "Start Using the app",
-// style: Theme.of(context).textTheme.bodyText2,
-// ),
-// )
-// ],
-// )
-// ],
-// );
+
+class AboutChurch extends StatelessWidget {
+  const AboutChurch({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/images/pastornorah.jpg'),
+            fit: BoxFit.cover),
+      ),
+      child: Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              'assets/images/logo.svg',
+              height: 160,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
